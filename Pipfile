@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 grequests = "*"
 "beautifulsoup4" = "*"
+mongoengine = "*"
+schedule = "*"
 
 [dev-packages]
 
