@@ -8,6 +8,9 @@ grequests = "*"
 "beautifulsoup4" = "*"
 mongoengine = "*"
 schedule = "*"
+graphene = "*"
+flask-graphql = "*"
+flask = "*"
 
 [dev-packages]
 
