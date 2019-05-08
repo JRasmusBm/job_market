@@ -27,7 +27,10 @@ def cron():
     asyncio.run(main())
 
 
-schedule.every().day.at("00:00").do(cron)
-while 1:
-    schedule.run_pending()
-    time.sleep(1)
+try:
+    schedule.every().day.at("00:00").do(cron)
+    while 1:
+        schedule.run_pending()
+        time.sleep(1)
+except Exception as e:
+    print(e)
