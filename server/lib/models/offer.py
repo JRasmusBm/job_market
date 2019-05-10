@@ -1,5 +1,7 @@
 import mongoengine as mongoengine
 from datetime import datetime
+from mongoengine import connect
+connect()
 
 class Offer(mongoengine.Document):
     title = mongoengine.StringField(required=True)
