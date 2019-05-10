@@ -2,20 +2,26 @@ import * as React from "react"
 import * as PropTypes from "prop-types"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
-const OrderOverview = () => {
-  const {server} = useStaticQuery(
+const OfferOverview = () => {
+  const { server } = useStaticQuery(
     graphql`
       query {
         server {
           offers {
-            name
+            title
             link
           }
         }
       }
     `
   )
-  return <main>{server.hello}</main>
+  return (
+    <ul>
+      {server &&
+        server.offers &&
+        server.offers.map(o => <li key={o.link}>{o.title}</li>)}
+    </ul>
+  )
 }
 
-export default OrderOverview
+export default OfferOverview
