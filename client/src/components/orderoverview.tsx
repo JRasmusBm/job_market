@@ -7,7 +7,10 @@ const OrderOverview = () => {
     graphql`
       query {
         server {
-          hello(argument: "Rasmus")
+          offers {
+            name
+            link
+          }
         }
       }
     `

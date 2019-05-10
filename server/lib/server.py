@@ -9,6 +9,5 @@ app.add_url_rule(
 )
 
 app.add_url_rule(
-    "/api/batch",
-    view_func=GraphQLView.as_view("batch", schema=schema, batch=True),
+    "/api/batch", view_func=GraphQLView.as_view("batch", schema=schema, batch=True)
 )
