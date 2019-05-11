@@ -1,4 +1,5 @@
 from sites.relocate import jobs as relocate_jobs
+from lib.models.offer import Offer as DBOffer
 from mongoengine import connect
 import schedule
 import time
@@ -18,13 +19,18 @@ async def write_jobs(jobs):
     return jobs
 
 
-async def main():
+async def scrape():
+    clear_scrapes()
     jobs = await gather_items([relocate_jobs()])
     await write_jobs(jobs)
 
 
+def clear_scrapes():
+    DBOffer.objects.delete()
+
+
 def cron():
-    asyncio.run(main())
+    asyncio.run(scrape())
 
 
 try:
