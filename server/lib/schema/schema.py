@@ -1,4 +1,5 @@
 import graphene
+import asyncio
 from lib.models.offer import Offer as DBOffer
 from lib.scrape import scrape, clear_scrapes
 
@@ -40,18 +41,15 @@ class ClearScrapes(graphene.Mutation):
             offers = []
         return Scrape(ok=ok, offers=offers)
 
+
 class Scrape(graphene.Mutation):
     ok = graphene.Boolean()
     offers = graphene.List(Offer)
 
     def mutate(self, info):
-        try:
-            asyncio.run(scrape())
-            offers = DBOffer.objects()
-            ok = True
-        except:
-            ok = False
-            offers = []
+        asyncio.run(scrape())
+        ok = True
+        offers = DBOffer.objects()
         return Scrape(ok=ok, offers=offers)
 
 

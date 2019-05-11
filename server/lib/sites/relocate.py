@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from models.Offer import Offer
+from lib.models.offer import Offer
 import grequests
 
 relocate = {
